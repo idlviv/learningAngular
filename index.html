@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Angular 2</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+</head>
+<body class="list-group" ng-controller="StoreController as store">
+    <div ng-repeat="product in store.products" class="container-fluid">
+        <div ng-hide="product.soldOut" class="product-row">
+            <div class="list-group-item">
+                <h1>{{product.name}}</h1>
+                <li ng-repeat="image in product.images" class="small-image pull-left thumbnail" >
+                    <img class="img img-circle img-thumbnail center-block" ng-src="{{image}}" />
+                </li>
+                <h2>{{product.price | currency}}</h2>
+                <em class="pull-left">{{product.description}}</em>
+                <button ng-show="product.canPurchase">add to Cart</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
